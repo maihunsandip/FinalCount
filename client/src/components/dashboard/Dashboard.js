@@ -5,6 +5,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { motion, AnimatePresence } from 'framer-motion';
 import 'react-circular-progressbar/dist/styles.css';
 import LifeCountdown from './LifeCountdown';
+import ShareModal from '../share/ShareModal';
 
 const useAnimatedValue = (targetValue, duration = 1500) => {
   const [value, setValue] = useState(0);
@@ -42,6 +43,7 @@ const Dashboard = () => {
   const [lifeData, setLifeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const animatedValue = useAnimatedValue(lifeData ? parseFloat(lifeData.percentCompleted || 0) : 0);
 
   useEffect(() => {
@@ -129,10 +131,18 @@ const Dashboard = () => {
             transition={{ delay: 0.2 }}
           >
             <motion.div 
-              className="bg-gray-900/50 backdrop-blur-lg border border-gray-800 p-8 rounded-2xl"
+              className="bg-gray-900/50 backdrop-blur-lg border border-gray-800 p-8 rounded-2xl relative"
               whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
+              <button
+                onClick={() => setIsShareModalOpen(true)}
+                className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white transition-colors"
+                title="Share your journey"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              </button>
               <h2 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">Life Progress</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -274,6 +284,15 @@ const Dashboard = () => {
           </motion.div>
         </div>
       </div>
+      {isShareModalOpen && lifeData && (
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={() => setIsShareModalOpen(false)}
+          daysLeft={lifeData.daysRemaining || 0}
+          deathDate={lifeData.estimatedDeathDate || null}
+          percentCompleted={lifeData.percentCompleted}
+        />
+      )}
     </motion.div>
   );
 };
