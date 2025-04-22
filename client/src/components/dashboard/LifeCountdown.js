@@ -60,7 +60,7 @@ const LifeCountdown = () => {
             'x-auth-token': localStorage.getItem('token')
           }
         };
-        const res = await axios.get('http://localhost:3001/api/user/life-expectancy', config);
+        const res = await axios.get('http://192.168.93.173:3001/api/user/life-expectancy', config);
         setCountdown(res.data);
       } catch (err) {
         setError('Failed to fetch life expectancy data');

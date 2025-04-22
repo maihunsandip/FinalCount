@@ -54,7 +54,7 @@ const Dashboard = () => {
             'x-auth-token': localStorage.getItem('token')
           }
         };
-        const res = await axios.get('http://localhost:3001/api/user/life-expectancy', config);
+        const res = await axios.get('http://192.168.93.173:3001/api/user/life-expectancy', config);
         setLifeData(res.data);
         setLoading(false);
       } catch (err) {
@@ -122,16 +122,16 @@ const Dashboard = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
           {/* Main Stats */}
           <motion.div 
-            className="md:col-span-8 space-y-6"
+            className="col-span-full md:col-span-8 space-y-4 md:space-y-6"
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
             <motion.div 
-              className="bg-gray-900/50 backdrop-blur-lg border border-gray-800 p-8 rounded-2xl relative"
+              className="bg-gray-900/50 backdrop-blur-lg border border-gray-800 p-4 md:p-8 rounded-2xl relative"
               whileHover={{ scale: 1.02 }}
             >
               <button
@@ -143,7 +143,7 @@ const Dashboard = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
               </button>
-              <h2 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">Life Progress</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">Life Progress</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <LifeCountdown />
@@ -169,7 +169,7 @@ const Dashboard = () => {
                     )}
                   </div>
                   <motion.div 
-                    className="text-gray-300 text-sm text-center"
+                    className="text-gray-400 text-lg md:text-xl text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
@@ -183,7 +183,7 @@ const Dashboard = () => {
 
           {/* Sidebar */}
           <motion.div 
-            className="md:col-span-4 space-y-6"
+            className="col-span-full md:col-span-4 space-y-4 md:space-y-6"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}

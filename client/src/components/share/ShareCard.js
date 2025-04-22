@@ -60,16 +60,16 @@ const ShareCard = ({ daysLeft = 0, deathDate = null, percentCompleted = 0 }) => 
   }, [deathDate, daysLeft]);
 
   return (
-    <div id="share-card" className="w-[600px] h-[315px] bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl flex flex-col justify-between">
-      <div className="flex items-center justify-between">
-        <div className="space-y-4">
-          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">
+    <div id="share-card" className="w-full max-w-[600px] h-[315px] bg-gradient-to-br from-gray-900 to-black p-4 md:p-8 rounded-2xl flex flex-col justify-between">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+        <div className="space-y-4 md:space-y-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             {formattedDaysLeft} Days Left
           </h2>
-          <p className="text-gray-400 text-xl">
+          <p className="text-gray-400 text-lg md:text-xl text-orange-500">
             Until {formattedDate}
           </p>
-          <p className="text-gray-300 text-lg italic mt-4">
+          <p className="text-gray-300 text-base md:text-lg italic mt-4">
             "{randomQuote}"
           </p>
         </div>
@@ -86,9 +86,9 @@ const ShareCard = ({ daysLeft = 0, deathDate = null, percentCompleted = 0 }) => 
           />
         </div>
       </div>
-      <div className="flex items-center justify-between mt-4">
-        <p className="text-gray-500">Made with FinalCount</p>
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 font-bold">
+      <div className="flex flex-col md:flex-row items-center justify-between mt-4 gap-2 md:gap-0">
+        <p className="text-gray-500 text-sm md:text-base">Made with FinalCount</p>
+        <div className="text-orange-500 font-bold text-sm md:text-base">
           finalcount.app
         </div>
       </div>

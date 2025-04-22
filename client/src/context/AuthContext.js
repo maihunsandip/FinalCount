@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
           'x-auth-token': token
         }
       };
-      const res = await axios.get('http://localhost:3001/api/user/profile', config);
+      const res = await axios.get('http://192.168.93.173:3001/api/user/profile', config);
       setUser(res.data);
     } catch (error) {
       localStorage.removeItem('token');
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/login', {
+      const res = await axios.post('http://192.168.93.173:3001/api/auth/login', {
         email,
         password
       });
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/register', {
+      const res = await axios.post('http://192.168.93.173:3001/api/auth/register', {
         email,
         password
       });
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
           'x-auth-token': localStorage.getItem('token')
         }
       };
-      const res = await axios.put('http://localhost:3001/api/user/profile', profileData, config);
+      const res = await axios.put('http://192.168.93.173:3001/api/user/profile', profileData, config);
       setUser(res.data);
       return true;
     } catch (error) {

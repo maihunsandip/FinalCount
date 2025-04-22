@@ -84,18 +84,18 @@ const ShareModal = ({ isOpen, onClose, daysLeft = 0, deathDate = null, percentCo
             />
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col md:flex-wrap gap-2 md:gap-4 justify-center mt-4">
             <button
               onClick={generateImage}
               disabled={isGenerating}
-              className="px-6 py-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-xl font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {isGenerating ? 'Generating...' : 'Download Image'}
             </button>
             
             <button
               onClick={shareToTwitter}
-              className="px-6 py-3 bg-[#1DA1F2] rounded-xl font-semibold text-white hover:opacity-90 transition-opacity"
+              className="px-4 py-2 md:px-6 md:py-3 bg-[#1DA1F2] rounded-xl font-semibold text-white hover:opacity-90 transition-opacity"
             >
               Share on Twitter
             </button>
@@ -103,7 +103,7 @@ const ShareModal = ({ isOpen, onClose, daysLeft = 0, deathDate = null, percentCo
             {navigator.share && (
               <button
                 onClick={handleShare}
-                className="px-6 py-3 bg-gray-700 rounded-xl font-semibold text-white hover:opacity-90 transition-opacity"
+                className="px-4 py-2 md:px-6 md:py-3 bg-gray-700 rounded-xl font-semibold text-white hover:opacity-90 transition-opacity"
               >
                 Share...
               </button>
