@@ -125,12 +125,12 @@ const LifeCountdown = () => {
           </motion.div>
         </AnimatePresence>
 
-        <div className="flex justify-center gap-2 mb-6">
+        <div className="flex justify-center sm:gap-2 mb-6 text-sm sm:text-base">
           {units.map(unit => (
             <motion.button
               key={unit}
               onClick={() => setDisplayUnit(unit)}
-              className={`px-4 py-2 rounded-full transition-all duration-300 ${
+              className={`px-3 py-1 rounded-full transition-all duration-300 ${
                 displayUnit === unit
                 ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
                 : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50'

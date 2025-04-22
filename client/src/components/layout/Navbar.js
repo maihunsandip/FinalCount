@@ -27,7 +27,7 @@ const Navbar = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full top-0 z-50 backdrop-blur-lg bg-gray-900/80 border-b border-gray-800"
+      className="fixed w-full top-0 z-50 backdrop-blur-lg bg-gray-900/80 border-b border-gray-800/70"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
@@ -35,38 +35,38 @@ const Navbar = () => {
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500"
+              className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500"
             >
               FinalCount
             </motion.span>
           </Link>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center sm:space-x-4">
             {user ? (
               <>
                 <NavLink to="/dashboard">
-                  <div className="flex items-center space-x-2">
-                    <ChartBarIcon className="w-5 h-5" />
+                  <div className="flex items-center sm:space-x-2 text-sm sm:text-base">
+                    <ChartBarIcon className="w-3 sm:w-5 h-3 sm:h-5" />
                     <span>Dashboard</span>
                   </div>
                 </NavLink>
                 <NavLink to="/profile">
-                  <div className="flex items-center space-x-2">
-                    <UserCircleIcon className="w-5 h-5" />
+                  <div className="flex items-center sm:space-x-2 text-sm sm:text-base">
+                    <UserCircleIcon className="w-3 sm:w-5 h-3 sm:h-5" />
                     <span>Profile</span>
                   </div>
                 </NavLink>
                 <button
                   onClick={logout}
-                  className="px-4 py-2 rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-orange-500 transition-all duration-300"
+                  className="px-4 py-2 rounded-full border border-gray-700 text-gray-300 hover:text-white hover:border-orange-500 transition-all duration-300 text-sm sm:text-base "
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/register">Register</NavLink>
+                <NavLink to="/login" className="text-sm sm:text-base">Login</NavLink>
+                <NavLink to="/register" className="text-sm sm:text-base">Register</NavLink>
               </>
             )}
           </div>
